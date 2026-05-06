@@ -243,8 +243,6 @@ Tests use **Mockito** (`@ExtendWith(MockitoExtension.class)`) so no Spring conte
 
 ---
 
-## Interview Talking Points
-
 ### Architecture & Design Patterns
 - **Layered Architecture**: Controller → Service → Repository separation of concerns.
 - **DTO Pattern**: `EmployeeDto` / `LeaveRequestDto` decouple API contracts from JPA entities, preventing over-posting and circular serialisation.
