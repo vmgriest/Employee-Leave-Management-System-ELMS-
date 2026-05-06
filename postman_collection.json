@@ -1,0 +1,256 @@
+{
+  "info": {
+    "_postman_id": "elms-collection-v1",
+    "name": "ELMS API Collection",
+    "description": "Employee Leave Management System — all REST endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Employee Management",
+      "item": [
+        {
+          "name": "Create Employee",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"employeeId\": \"TCS001\",\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@tcs.com\",\n  \"department\": \"Engineering\",\n  \"role\": \"EMPLOYEE\",\n  \"availableLeaves\": 20.0,\n  \"managerId\": null\n}"
+            }
+          }
+        },
+        {
+          "name": "Create Manager",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"employeeId\": \"MGR001\",\n  \"name\": \"Alice Manager\",\n  \"email\": \"alice.manager@tcs.com\",\n  \"department\": \"Engineering\",\n  \"role\": \"MANAGER\",\n  \"availableLeaves\": 20.0,\n  \"managerId\": null\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Employees",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/employees",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees"]
+            }
+          }
+        },
+        {
+          "name": "Get Employee by DB ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Employee by Employee ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/emp-id/TCS001",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees", "emp-id", "TCS001"]
+            }
+          }
+        },
+        {
+          "name": "Get Employees by Department",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/department/Engineering",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees", "department", "Engineering"]
+            }
+          }
+        },
+        {
+          "name": "Update Employee",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees", "1"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"employeeId\": \"TCS001\",\n  \"name\": \"John Doe Updated\",\n  \"email\": \"john.doe@tcs.com\",\n  \"department\": \"Engineering\",\n  \"role\": \"EMPLOYEE\",\n  \"availableLeaves\": 18.0,\n  \"managerId\": 2\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Employee",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Leave Balance",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/1/leave-balance",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees", "1", "leave-balance"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Leave Management",
+      "item": [
+        {
+          "name": "Apply for Leave",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/leaves/apply/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "leaves", "apply", "1"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"startDate\": \"2026-06-10\",\n  \"endDate\": \"2026-06-12\",\n  \"leaveType\": \"CASUAL\",\n  \"reason\": \"Family vacation\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Leaves",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/leaves",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "leaves"]
+            }
+          }
+        },
+        {
+          "name": "Get Leave by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/leaves/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "leaves", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Employee Leaves",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/leaves/employee/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "leaves", "employee", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Pending Leaves for Manager",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/leaves/pending/manager/2",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "leaves", "pending", "manager", "2"]
+            }
+          }
+        },
+        {
+          "name": "Approve Leave",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "text/plain" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/leaves/1/approve/2",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "leaves", "1", "approve", "2"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "Approved — enjoy your leave!"
+            }
+          }
+        },
+        {
+          "name": "Reject Leave",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "text/plain" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/leaves/1/reject/2",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "leaves", "1", "reject", "2"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "Critical project deadline — cannot approve at this time."
+            }
+          }
+        },
+        {
+          "name": "Cancel Leave",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/api/leaves/1/cancel/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "leaves", "1", "cancel", "1"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
